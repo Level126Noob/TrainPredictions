@@ -12,17 +12,34 @@ var config = {
 
 firebase.initializeApp(config);
 
+var database = firebase.database();
+//=====================================================================================================================================================================================
 
+
+//an on click function so the submit button stores the values of the input fields at the bottom
 $('button').click(function (e) {
     e.preventDefault();
 
-    var trainname = $('#trainname').val().trim();
-    console.log(trainname);
-    var destination = $('#destination').val().trim();
-    console.log(destination);
-    var minutes = $('#eta').val().trim();
-    console.log(minutes);
-    var frequency = $('#frequency').val().trim();
-    console.log(frequency);
+    var empTrainname = $('#trainname').val().trim();
+    var emptDestination = $('#destination').val().trim();
+    var empMinutes = $('#eta').val().trim();
+    var empFrequency = $('#frequency').val().trim();
 
+
+    //creating a local 'temporary' object for holding train data
+    var newEmp = {
+        name: empTrainname,
+        destination: emptDestination,
+        minutes: empMinutes,
+        frequency: empFrequency
+    };
+
+    //uploads train data to the database
+    database.ref().push(newEmp);
+
+    //logs everything to console
+    console.log(newEmp.name);
+    console.log(newEmp.destination);
+    console.log(newEmp.minutes);
+    console.log(newEmp.frequency);
 });
