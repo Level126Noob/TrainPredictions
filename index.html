@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
+
+    <title>Train Predictions</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="jumbotron jumbotron-fluid text-center text-white bg-primary">
+            <div class="container">
+                <h1 class="display-4">Train Predictions</h1>
+                <p class="lead">This is an application using firebase to predict train arrival times!
+                </p>
+            </div>
+        </div>
+
+        <div class='card border border-primary'>
+            <div class='card-header bg-primary text-white'>
+                Add Train
+            </div>
+            <div class='card-body'>
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Next Arrival</th>
+                            <th scope='col'>Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Trenton Express</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>mins</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Oregon Trail</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>mins</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Midnight Carriage</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>mins</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sing Sing Caravan</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>mins</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Boston Bus</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>mins</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">California Caravan</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>mins</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Analben's Train</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>mins</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+
+        <div class='card border border-primary'>
+            <div class='card-header bg-primary text-white'>
+                Add Train
+            </div>
+            <div class='card-body'>
+                <form>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Train Name</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Destination</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">First Train Time(HH:mm - military time)</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Frequency (min)</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2">
+                    </div>
+                    <button type="button" class="btn btn-primary">Submit!</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="java.js"></script>
+</body>
+
+</html>
