@@ -42,4 +42,39 @@ $('button').click(function (e) {
     console.log(newEmp.destination);
     console.log(newEmp.minutes);
     console.log(newEmp.frequency);
+
+    //clears all of the text-boxes
+    $('#trainname').val('');
+    $('#destination').val('');
+    $('#eta').val('');
+    $('#frequency').val('');
+});
+
+//creating firebase event for adding train to the database and a row in the BS4 when a user adds an entry
+database.ref().on('child_added', function(childSnapshot) {
+    console.log(childSnapshot.val());
+
+    //storing everything into a variable
+    var empTrainname = childSnapshot.val().name;
+    var emptDestination = childSnapshot.val().destination;
+    var empMinutes = childSnapshot.val().minutes;
+    var empFrequency = childSnapshot.val().frequency;
+
+    //train info
+    console.log(empTrainname);
+    console.log(emptDestination);
+    console.log(empMinutes);
+    console.log(empFrequency);
+
+    //creating a row for the train information
+    var newRow = $("<tr>").append(
+        $("<td>").text(empTrainname),
+        $("<td>").text(emptDestination),
+        $("<td>").text(empMinutes),
+        $("<td>").text(empFrequency)
+      );
+
+    //appending the new row to the table body
+    $("#trainData > tbody").append(newRow);
+    
 });
