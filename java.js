@@ -21,7 +21,7 @@ $('button').click(function (e) {
     e.preventDefault();
 
     var empTrainname = $('#trainname').val().trim();
-    var emptDestination = $('#destination').val().trim();
+    var empDestination = $('#destination').val().trim();
     var empMinutes = $('#eta').val().trim();
     var empFrequency = $('#frequency').val().trim();
 
@@ -29,7 +29,7 @@ $('button').click(function (e) {
     //creating a local 'temporary' object for holding train data
     var newEmp = {
         name: empTrainname,
-        destination: emptDestination,
+        destination: empDestination,
         minutes: empMinutes,
         frequency: empFrequency
     };
@@ -51,18 +51,18 @@ $('button').click(function (e) {
 });
 
 //creating firebase event for adding train to the database and a row in the BS4 when a user adds an entry
-database.ref().on('child_added', function(childSnapshot) {
+database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
-
+  
     //storing everything into a variable
     var empTrainname = childSnapshot.val().name;
-    var emptDestination = childSnapshot.val().destination;
+    var empDestination = childSnapshot.val().destination;
     var empMinutes = childSnapshot.val().minutes;
     var empFrequency = childSnapshot.val().frequency;
 
     //train info
     console.log(empTrainname);
-    console.log(emptDestination);
+    console.log(empDestination);
     console.log(empMinutes);
     console.log(empFrequency);
 
@@ -75,6 +75,6 @@ database.ref().on('child_added', function(childSnapshot) {
       );
 
     //appending the new row to the table body
-    $("#trainData > tbody").append(newRow);
+    $("#train-table > tbody").append(newRow);
     
 });
