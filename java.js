@@ -12,13 +12,17 @@ var config = {
 
 firebase.initializeApp(config);
 
+firebase.database.enableLogging(function(message) {
+    console.log("[FIREBASE]", message);
+  });
+
 var database = firebase.database();
 //=====================================================================================================================================================================================
 
 
 //an on click function so the submit button stores the values of the input fields at the bottom
-$('button').click(function (e) {
-    e.preventDefault();
+$('button').click(function (event) {
+    event.preventDefault();
 
     var empTrainname = $('#trainname').val().trim();
     var empDestination = $('#destination').val().trim();
@@ -69,7 +73,7 @@ database.ref().on("child_added", function(childSnapshot) {
     //creating a row for the train information
     var newRow = $("<tr>").append(
         $("<td>").text(empTrainname),
-        $("<td>").text(emptDestination),
+        $("<td>").text(empDestination),
         $("<td>").text(empMinutes),
         $("<td>").text(empFrequency)
       );
