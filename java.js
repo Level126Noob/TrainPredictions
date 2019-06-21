@@ -76,7 +76,7 @@ $('button').click(function (event) {
 });
 
 //creating firebase event for adding train to the database and a row in the BS4 when a user adds an entry
-database.ref().on("child_added", function (childSnapshot) {
+database.ref().on("child_added", function grab(childSnapshot) {
   console.log(childSnapshot.val());
 
   //storing everything into a variable
@@ -85,21 +85,50 @@ database.ref().on("child_added", function (childSnapshot) {
   var empMinutes = childSnapshot.val().minutes;
   var empNextArrival = childSnapshot.val().NextArrival;
 
+  var firstTimeConverted = moment(empNextArrival, "hh:mm").subtract(1, "years");
+  console.log(firstTimeConverted);
+
+  var currentTime = moment();
+  console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"))
+
+
+  var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+  console.log("DIFFERENCE IN TIME: " + diffTime);
+
+
+  var tRemainder = diffTime % empMinutes;
+  console.log(tRemainder);
+
+  var tMinutesTillTrain = empMinutes - tRemainder;
+  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+
+  //only displayed the date and time because I can't get the time zone of my computer to change from GMT...
+  //So the format for this displays the date, time, and time zone simply to get the user the information they need to
+  //catch the train in their own time zone.
+  var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(empNextArrival).format("hh:mm"));
+
+
   //train info
   console.log(empTrainname);
   console.log(empDestination);
   console.log(empMinutes);
   console.log(empNextArrival);
+  
+  
 
   //creating a row for the train information
   var newRow = $("<tr>").append(
     $("<td>").text(empTrainname),
     $("<td>").text(empDestination),
     $("<td>").text(empMinutes),
-    $("<td>").text(empNextArrival)
+    $("<td>").text(nextTrain),
+    $("<td>").text(tMinutesTillTrain)
   );
 
   //appending the new row to the table body
   $("#train-table > tbody").append(newRow);
 
 });
+
