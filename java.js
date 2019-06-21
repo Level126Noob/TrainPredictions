@@ -1,3 +1,7 @@
+//WARNING, WHEN GRADING PAPER I USED A META TAG IN HTML TO REFRESH THE PAGE EVERY MINUTE TO MAINTAIN TRAIN TIME ACCURACY.
+//TAKE THAT INTO CONSIDERATION BEFORE GRADING SO IT DOESN'T AUTO REFRESH ON YOU AND MAKE YOU MAD. :)
+
+
 //initializing firebase
 var config = {
   apiKey: "AIzaSyAmmeTXPMJOrGvS1aF5DXF5sQML8_f3eqo",
@@ -102,10 +106,6 @@ database.ref().on("child_added", function grab(childSnapshot) {
   var tMinutesTillTrain = empMinutes - tRemainder;
   console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
-
-  //only displayed the date and time because I can't get the time zone of my computer to change from GMT...
-  //So the format for this displays the date, time, and time zone simply to get the user the information they need to
-  //catch the train in their own time zone.
   var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(empNextArrival).format("hh:mm"));
 
