@@ -47,8 +47,8 @@ $('button').click(function (event) {
 
   var empTrainname = $('#trainname').val().trim();
   var empDestination = $('#destination').val().trim();
-  var empMinutes = $('#eta').val().trim();
-  var empFrequency = $('#frequency').val().trim();
+  var empMinutes = $('#Frequency').val().trim();
+  var empNextArrival = $('#NextArrival').val().trim();
 
 
   //creating a local 'temporary' object for holding train data
@@ -56,7 +56,7 @@ $('button').click(function (event) {
     name: empTrainname,
     destination: empDestination,
     minutes: empMinutes,
-    frequency: empFrequency
+    NextArrival: empNextArrival
   };
 
   //uploads train data to the database
@@ -66,13 +66,13 @@ $('button').click(function (event) {
   console.log(newEmp.name);
   console.log(newEmp.destination);
   console.log(newEmp.minutes);
-  console.log(newEmp.frequency);
+  console.log(newEmp.NextArrival);
 
   //clears all of the text-boxes
   $('#trainname').val('');
   $('#destination').val('');
-  $('#eta').val('');
-  $('#frequency').val('');
+  $('#Frequency').val('');
+  $('#NextArrival').val('');
 });
 
 //creating firebase event for adding train to the database and a row in the BS4 when a user adds an entry
@@ -83,20 +83,20 @@ database.ref().on("child_added", function (childSnapshot) {
   var empTrainname = childSnapshot.val().name;
   var empDestination = childSnapshot.val().destination;
   var empMinutes = childSnapshot.val().minutes;
-  var empFrequency = childSnapshot.val().frequency;
+  var empNextArrival = childSnapshot.val().NextArrival;
 
   //train info
   console.log(empTrainname);
   console.log(empDestination);
   console.log(empMinutes);
-  console.log(empFrequency);
+  console.log(empNextArrival);
 
   //creating a row for the train information
   var newRow = $("<tr>").append(
     $("<td>").text(empTrainname),
     $("<td>").text(empDestination),
     $("<td>").text(empMinutes),
-    $("<td>").text(empFrequency)
+    $("<td>").text(empNextArrival)
   );
 
   //appending the new row to the table body
